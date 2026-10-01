@@ -1,0 +1,76 @@
+File Handling in Java
+Source Files: MovieManager.java and Movies.csv
+
+Question: What is file handling?
+The method or process of reading, writing, updating, modifying pr deleting
+Data in files which are stored in the computer 
+Allows data to be stored permenantly
+Regardless of the program running or not
+
+These notes are a brief comparison of File Handling in Java and C.
+Main focus remains file handling in Java.
+
+Java has a concept of building classes and objects. So for file handling, a class must be created.
+
+class OR public class MovieManager (MovieFile/FileHandling/Filing/etc)
+features of the class:
+- data storage through data structures (lists, arrays, hasmhmaps)
+- structured loops for displaying formatted data (optional)
+- loading data from files 
+- reading or writing data from files
+- displaying data from files
+- .csv file used
+- usage of strings and conditional statements
+after intializing variables
+create a VOID method loadMoivesFromFile(String FilePath) throws IOException {
+    ...
+}
+void method is generally craeted for loading files since loading files does not return any ouptut
+String filepath is the variable where the path of the file is stored
+throws IOException - throws Exception if file does not exist or trouble loading file
+
+LOADING DATA FROM FILE
+
+public void loadMoivesFromFile(String FilePath) throws IOException {
+    BufferedReader reader = new BufferedReader(new FileReader(filePath));
+}
+
+EXAMPLE OF LOADING DATA FROM A FILE NAMED Example1.csv:
+
+public class ReadExcel {
+    public static void main(String[] args) throws IOException {
+            BufferedReader br = new BufferedReader(new FileReader("Example1.csv"));
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+    }
+}
+
+this example of file handling syntax breaks down to the following points:
+- BufferedReader is the class used to open the file and start reading
+- BufferedReader is declared in an object so that BufferedReader can open the file from "Example1.csv"
+- a String variable is declared to store each line read from the file
+- br.readLine() != null means br (BufferedReader object) reads String line until line becomes null
+ 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class demo {
+    public static void main(String[] args) {
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("movies.csv"));
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+}
+Sample program for file handing
